@@ -1,0 +1,47 @@
+-- Create a new Database "CompanyDB"
+CREATE DATABASE CompanyDB
+
+USE CompanyDB
+
+-- Create a new Table "Departments"
+CREATE TABLE Departments (
+     department_id INT IDENTITY Primary Key, 
+	 department_name VARCHAR(50),
+	 location VARCHAR(50)
+);
+
+-- Create a new Table "Employees"
+CREATE TABLE Employees ( 
+	employee_id INT IDENTITY Primary Key,
+	first_name VARCHAR(50),
+	last_name VARCHAR(50), 
+	date_of_birth DATE, 
+	department_id INT REFERENCES Departments (department_id),
+	salary INT
+);
+
+-- Alter Table "Employees"
+ALTER TABLE Employees
+ADD email VARCHAR(50) UNIQUE;
+
+-- Alter Table "Departments"
+ALTER TABLE Departments
+ALTER COLUMN location VARCHAR(200);
+
+-- Drop Datatype, Columns, and Tables
+
+-- Drop "date_of_birth" column from the "Employees" table
+ALTER TABLE Employees
+DROP COLUMN date_of_birth;
+
+-- Drop "Employees" table from the database
+DROP TABLE Employees;
+
+--  Drop the database "CompanyDB"
+DROP DATABASE CompanyDB;
+
+
+
+
+
+
